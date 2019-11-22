@@ -17,7 +17,7 @@ steps:
   image: golang:1.13.0
   commands:
   - sh scripts/build.sh
-  - ls
+  - ls release
   environment:
     GOARCH: amd64
     GOOS: linux
