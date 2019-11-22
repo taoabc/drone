@@ -28,39 +28,7 @@ steps:
     auto_tag: true
     auto_tag_suffix: linux-amd64
     dockerfile: docker/Dockerfile.server.linux.amd64
-    repo: drone/drone
-    username:
-      from_secret: docker_username
-    password:
-      from_secret: docker_password
-  when:
-    event:
-    - push
-    - tag
-
-- name: publish_agent
-  image: plugins/docker:18
-  settings:
-    auto_tag: true
-    auto_tag_suffix: linux-amd64
-    dockerfile: docker/Dockerfile.agent.linux.amd64
-    repo: drone/agent
-    username:
-      from_secret: docker_username
-    password:
-      from_secret: docker_password
-  when:
-    event:
-    - push
-    - tag
-
-- name: publish_controller
-  image: plugins/docker:18
-  settings:
-    auto_tag: true
-    auto_tag_suffix: linux-amd64
-    dockerfile: docker/Dockerfile.controller.linux.amd64
-    repo: drone/controller
+    repo: taoxyz/drone
     username:
       from_secret: docker_username
     password:
