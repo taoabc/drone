@@ -8,16 +8,15 @@ platform:
   os: linux
 
 steps:
-- name: test
-  image: golang:1.13.0
-  commands:
-  - go test ./...
+# - name: test
+#   image: golang:1.13.0
+#   commands:
+#   - go test ./...
 
 - name: build
   image: golang:1.13.0
   commands:
   - sh scripts/build.sh
-  - ls release
   environment:
     GOARCH: amd64
     GOOS: linux
