@@ -22,7 +22,7 @@
       auto_tag: true
       auto_tag_suffix: linux-amd64
       dockerfile: docker/Dockerfile.server.linux.amd64
-      repo: drone/drone
+      repo: taoabc/drone-oss
       username:
         from_secret: docker_username
       password:
