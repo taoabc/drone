@@ -19,7 +19,7 @@
   - name: publish
     image: plugins/docker:18
     settings:
-      auto_tag: true
+      auto_tag: true # with auto_tag: true, must push tag or master to push docker image.
       auto_tag_suffix: linux-amd64
       dockerfile: docker/Dockerfile.server.linux.amd64
       repo: taoabc/drone-oss
