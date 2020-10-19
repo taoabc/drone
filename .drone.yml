@@ -1,38 +1,38 @@
 ---
-kind: pipeline
-type: docker
-name: linux-amd64
+  kind: pipeline
+  type: docker
+  name: linux-amd64
 
-platform:
-  arch: amd64
-  os: linux
+  platform:
+    arch: amd64
+    os: linux
 
-steps:
-- name: test
-  image: golang:1.14.4
-  commands:
-  - go test ./...
+  steps:
+  - name: test
+    image: golang:1.14.4
+    commands:
+    - go test ./...
 
-- name: build
-  image: golang:1.14.4
-  commands:
-  - sh scripts/build.sh
-  environment:
-    GOARCH: amd64
-    GOOS: linux
+  - name: build
+    image: golang:1.14.4
+    commands:
+    - sh scripts/build.sh
+    environment:
+      GOARCH: amd64
+      GOOS: linux
 
-- name: publish
-  image: plugins/docker:18
-  settings:
-    auto_tag: true
-    auto_tag_suffix: linux-amd64
-    dockerfile: docker/Dockerfile.server.linux.amd64
-    repo: taoxyz/drone-oss
-    username:
-      from_secret: docker_username
-    password:
-      from_secret: docker_password
-  when:
-    event:
-    - push
-    - tag
+  - name: publish
+    image: plugins/docker:18
+    settings:
+      auto_tag: true
+      auto_tag_suffix: linux-amd64
+      dockerfile: docker/Dockerfile.server.linux.amd64
+      repo: drone/drone
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
+    when:
+      event:
+      - push
+      - tag
